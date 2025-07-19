@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: lpu-clicks-backend
+    env: python
+    region: oregon
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn LPUclicks.wsgi:application
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: LPUclicks.settings
+      - key: SECRET_KEY
+        value: your-django-secret-key
+      - key: ALLOWED_HOSTS
+        value: .onrender.com
+      # Add database URL if using PostgreSQL or other services
+
+staticPublish:
+  - path: /static
+    source: staticfiles
