@@ -1,0 +1,29 @@
+{% load static %}
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header d-flex justify-content-center">
+                <div class="w-100">
+
+                    <form method="get" action="{% url 'search_results' %}">
+                        {% csrf_token %}
+                        <div class="input-group rounded">
+                            <input type="text" name="q" placeholder="Search users and posts"
+                                class="form-control rounded" aria-label="Search" aria-describedby="search-addon" required />
+
+                            <!-- Submit button styled as icon -->
+                            <button class="btn btn-outline-secondary" type="submit" id="search-addon">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

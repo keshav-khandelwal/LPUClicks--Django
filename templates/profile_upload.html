@@ -1,0 +1,106 @@
+{% load static %}
+<style>
+    /* Modal Animation */
+    .modal.fade .modal-dialog {
+        transform: translateY(-100px);
+        transition: transform 0.4s ease-out;
+    }
+
+    .modal.fade.show .modal-dialog {
+        transform: translateY(0);
+    }
+
+    /* Header and Footer Styling */
+    #exampleModal2 .modal-header,
+    #exampleModal2 .modal-footer {
+        background-color: #f7931e;
+        color: white;
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+        border-bottom-left-radius: 1rem;
+        border-bottom-right-radius: 1rem;
+    }
+
+    #exampleModal2 .modal-title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    /* File Preview Image */
+    #exampleModal2 .upload-icon {
+        height: 40px;
+        width: auto;
+        margin-bottom: 8px;
+    }
+
+    /* Input Focus Style */
+    #exampleModal2 .form-control:focus {
+        border-color: #f7931e;
+        box-shadow: 0 0 0 0.2rem rgba(247, 147, 30, 0.25);
+    }
+
+    /* Buttons */
+    #exampleModal2 .btn-primary {
+        background-color: #f7931e;
+        border-color: #f7931e;
+    }
+
+    #exampleModal2 .btn-primary:hover {
+        background-color: #e57c00;
+        border-color: #e57c00;
+    }
+
+    #exampleModal2 .btn-close {
+        background-color: white;
+    }
+
+    #exampleModal2 .modal-content {
+        border-radius: 1rem;
+        box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+</style>
+
+<!-- Modal HTML -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel2">
+                    <img src="https://www.lpu.in/authenticate/lpu%20logo.png" alt="LPU Logo" height="50">
+                    New Post
+                </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <form action="/upload" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    
+                    <div class="mb-3">
+                        
+                        <label for="recipient-name" class="form-label fw-semibold">Upload Photo</label>
+                        <input type="file" name="image_upload" class="form-control" id="recipient-name" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="message-text" class="form-label fw-semibold">Caption</label>
+                        <textarea class="form-control" name="caption" placeholder="Write your caption here..."
+                            id="message-text" rows="3" required></textarea>
+                    </div>
+
+                    <!-- Modal Footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Create Post</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

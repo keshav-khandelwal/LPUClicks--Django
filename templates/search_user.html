@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search Results | LPU Clicks</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .search-container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+
+        .search-header {
+            color: #f7931e;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .user-card {
+            padding: 15px 20px;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+            background: #fefefe;
+        }
+
+        .user-card:hover {
+            background-color: #fff8f0;
+            box-shadow: 0 2px 8px rgba(247, 147, 30, 0.2);
+        }
+
+        .user-card a {
+            font-size: 1.25rem;
+            color: #000;
+            text-decoration: none;
+        }
+
+        .user-card a:hover {
+            color: #f7931e;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="search-container">
+        <h1 class="search-header">Search Results for "{{ query }}"</h1>
+
+        <h4 class="mb-3">User Profiles</h4>
+
+        {% for user in users %}
+            <div class="user-card">
+                <strong><a href="/profile/{{ user.user.username }}">@{{ user.user.username }}</a></strong>
+            </div>
+        {% empty %}
+            <p>No matching users found.</p>
+        {% endfor %}
+    </div>
+
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

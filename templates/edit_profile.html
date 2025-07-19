@@ -1,0 +1,110 @@
+{% load static %}
+<style>
+    /* Modal Animation */
+    .modal.fade .modal-dialog {
+        transform: translateY(-100px);
+        transition: transform 0.4s ease-out;
+    }
+
+    .modal.fade.show .modal-dialog {
+        transform: translateY(0);
+    }
+
+    /* Header and Footer Styling */
+    #exampleModal1 .modal-header,
+    #exampleModal1 .modal-footer {
+        background-color: #f7931e;
+        color: white;
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+        border-bottom-left-radius: 1rem;
+        border-bottom-right-radius: 1rem;
+    }
+
+    #exampleModal1 .modal-title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    /* Upload Icon */
+    #exampleModal1 .upload-icon {
+        height: 40px;
+        width: auto;
+        margin-bottom: 8px;
+    }
+
+    /* Input Focus */
+    #exampleModal1 .form-control:focus {
+        border-color: #f7931e;
+        box-shadow: 0 0 0 0.2rem rgba(247, 147, 30, 0.25);
+    }
+
+    /* Buttons */
+    #exampleModal1 .btn-primary {
+        background-color: #f7931e;
+        border-color: #f7931e;
+    }
+
+    #exampleModal1 .btn-primary:hover {
+        background-color: #e57c00;
+        border-color: #e57c00;
+    }
+
+    #exampleModal1 .btn-close {
+        background-color: white;
+    }
+
+    #exampleModal1 .modal-content {
+        border-radius: 1rem;
+        box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+    }
+</style>
+
+<!-- Modal HTML -->
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Header -->
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel1">
+                    <img src="https://www.lpu.in/authenticate/lpu%20logo.png" alt="LPU Logo" height="50">
+                    Edit Profile
+                </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <!-- Body -->
+            <div class="modal-body">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    
+                    <div class="mb-3">
+                        
+                        <label for="recipient-name" class="form-label fw-semibold">Profile Photo</label>
+                        <input type="file" name="image" class="form-control" id="recipient-name">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="message-text" class="form-label fw-semibold">Bio</label>
+                        <textarea class="form-control" name="bio" placeholder="Write something about you..."
+                            id="message-text" rows="3">{{ user_profile.bio }}</textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="recipient-name" class="form-label fw-semibold">Location</label>
+                        <input type="text" class="form-control" name="location" id="recipient-name" value="{{ user_profile.location }}">
+                    </div>
+
+                    <!-- Footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Update Profile</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
