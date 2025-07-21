@@ -5,6 +5,17 @@ LPU Clicks is a dynamic, full-stack social media platform created exclusively fo
 The platform aims to foster a vibrant community where students can **capture moments**, **connect with peers**, and **participate in trending campus challenges**.
 
 ---
+## 📸 Screenshots
+
+### 🏠 Home Feed Page
+![Home Feed](assets/home.png)
+
+### 👤 Profile Page
+![Profile Page](assets/profile.png)
+
+### 🔍 Search Modal with Results
+![Search Modal](assets/search.png)
+
 
 ## 🌟 Features
 
