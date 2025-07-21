@@ -9,16 +9,12 @@ services:
     envVars:
       - key: DJANGO_SETTINGS_MODULE
         value: LPUclicks.settings
-      - key: DJANGO_SECRET_KEY
+      - key: SECRET_KEY
         value: your-django-secret-key
-      - key: DEBUG
-        value: False
-      - key: DATABASE_URL
-        fromDatabase:
-          name: lpu-clicks-db
-          property: connectionString
+      - key: ALLOWED_HOSTS
+        value: .onrender.com
+      # Add database URL if using PostgreSQL or other services
 
-# OPTIONAL if you're not using WhiteNoise (but we are, so can remove this)
-# staticPublish:
-#   - path: /static
-#     source: staticfiles
+staticPublish:
+  - path: /static
+    source: staticfiles
