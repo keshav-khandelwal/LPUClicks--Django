@@ -8,7 +8,7 @@ The platform aims to foster a vibrant community where students can **capture mom
 ## 📸 Screenshots
 
 ### 🏠 Home Feed Page
-![Home Feed](assets/home.png)
+![Home Feed](Screenshot%202025-07-21%20105744.png)
 
 ### 👤 Profile Page
 ![Profile Page](assets/profile.png)
